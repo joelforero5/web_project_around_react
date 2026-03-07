@@ -11,7 +11,7 @@ function App() {
 
   return (
     <>
-      <div class="page__content">
+      <div className="page__content">
       <Header />
       <Main />
       <Footer />
