@@ -32,7 +32,7 @@
   background: rgba(0, 0, 0, 0.8);
   cursor: pointer;
 }
-.popup__button_disabled {
+.popup__button:disabled {
   background-color: #e0e0e0;
   color: #a0a0a0;
   border: none;
