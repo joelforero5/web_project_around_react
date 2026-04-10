@@ -1,7 +1,18 @@
-export default function EditAvatar(){
+import { useRef, useContext } from 'react';
+import { CurrentUserContext } from '../../../../../contexts/CurrentUserContext.js';
+
+function EditAvatar(){
+  const avatarRef = useRef();
+  const {handleUpdateAvatar} = useContext(CurrentUserContext);
+
+  function handleSubmit(event){
+    event.preventDefault();
+    handleUpdateAvatar({avatar:avatarRef.current.value});
+  }
     return(
-    <form autoComplete="off" className="popup__form" id="new-card-form">
+    <form autoComplete="off" className="popup__form" id="new-card-form" onSubmit={handleSubmit}>
             <input
+            ref={avatarRef}
               className="popup__input popup__input_type_url"
               id="link"
               name="link"
@@ -15,3 +26,4 @@ export default function EditAvatar(){
           </form>
 );
 }
+export default EditAvatar;
