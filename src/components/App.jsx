@@ -7,7 +7,11 @@ import {api} from '../utils/api.js'
 import { CurrentUserContext } from '../contexts/CurrentUserContext.js'
 
 function App() {
-    const [currentUser, setCurrentUser] = useState({});
+    const [currentUser, setCurrentUser] = useState({
+        name: '',
+        about: '',
+        avatar: ''
+    });
     const [cards, setCards] = useState([]);
     const [popup, setPopup] = useState(null); // ← subido desde Main
    
@@ -15,13 +19,22 @@ function App() {
     useEffect(() => {
         api.getUserInfo().then((userData) => {
             setCurrentUser(userData);
-            console.log("Se cargo informacion del usuario");
+            console.log({
+                msg:"Se cargo informacion del usuario",
+                data:userData
+            });
         }).catch(console.error);
          api.getInitialCards().then((data) => {
             setCards(data)
-            console.log("Se cargaron las tarjetas");
+            console.log({
+                msg:"Se cargaron las tarjetas",
+                data:data
+            });
           }).catch((err) => {
-            console.log(err);
+            console.log({
+                msg:"Error al cargar las tarjetas",
+                data:err
+            });
           });
     }, []);
 

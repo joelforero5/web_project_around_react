@@ -1,4 +1,4 @@
-import logo from '../../../images/logo.svg'
+import logo from '../../assets/images/logo.svg';
 function Header() {
     return(
         <header className="header page__section">

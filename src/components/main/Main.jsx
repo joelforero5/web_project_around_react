@@ -1,4 +1,4 @@
-import avatar from '../../../images/avatar.jpg'
+import avatarFallback from '../../assets/images/avatar.jpg';
 import React, { useEffect, useState , useContext} from 'react'
 import NewCard from './components/popup/newCard/NewCard'
 import EditProfile from './components/popup/editProfile/EditProfile.jsx'
@@ -24,7 +24,9 @@ function Main({onOpenPopup,onClosePopup,popup,cards,onCardLike,onCardDelete}) {
               <i className="fas fa-pen"></i>
             </div>
             <img className="profile__image" 
-            src={`${currentUser.avatar}`} alt="Avatar" 
+            src={currentUser.avatar || avatarFallback} 
+            onError={(e)=>{e.target.src = avatarFallback}}
+            alt="Avatar" 
             />
           </div>
           
